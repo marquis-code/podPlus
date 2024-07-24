@@ -37,6 +37,7 @@
     "dayjs": "^1.11.11",
     "emoji-picker-element": "^1.21.3",
     "file-saver": "^2.0.5",
+    "flutterwave-vue3": "^0.0.2",
     "jwt-decode": "^4.0.0",
     "mammoth": "^1.8.0",
     "moment": "^2.30.1",

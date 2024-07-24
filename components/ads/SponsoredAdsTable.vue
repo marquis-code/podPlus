@@ -3,15 +3,15 @@
         <div class="px-4 sm:px-6 lg:px-8">
             <div class="sm:flex sm:items-center">
                 <div class="sm:flex-auto">
-                    <h1 class="text-base font-semibold leading-6 text-gray-900">Sponsored Ads</h1>
-                    <p class="mt-2 text-sm text-gray-700">A list of all the sponsored ads in your account including
+                    <h1 class="text-base font-semibold leading-6 text-gray-900">Banner Ads</h1>
+                    <p class="mt-2 text-sm text-gray-700">A list of all the banner ads in your account including
                         their name,
                         title, email and role.</p>
                 </div>
                 <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none">
-                    <button type="button" @click="handleAds('create')"
+                    <NuxtLink to="/dashboard/ads/new"
                         class="block rounded-md bg-indigo-600 px-3 py-2 text-center text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Create
-                        new ads</button>
+                        new ads</NuxtLink>
                 </div>
             </div>
             <div class="mt-8 flow-root">
@@ -126,14 +126,6 @@
                 </div>
             </div>
         </div>
-
-        <CoreSlideOver :show="showSlideOver" @update:show="closeSideModal" :title="computedSlideOverHeader.title"
-            :description="computedSlideOverHeader.desc">
-            <template #content>
-                <AdsForm @success="showSlideOver = false" :ads="selectedAds"
-                    v-if="route.query.action === 'edit' || route.query.action === 'create'" />
-            </template>
-        </CoreSlideOver>
     </main>
 </template>
 
@@ -165,33 +157,4 @@ const handleAds = (action: string, data?: any) => {
     }
 }
 
-const computedSlideOverHeader = computed(() => {
-    switch (route.query.action) {
-        case 'create':
-            return {
-                title: 'Create Sponsored Ads',
-                desc: 'Enter client name, upload sponsored file, start date, end date and target link to begin'
-            }
-        case 'edit':
-            return {
-                title: 'Edit Sponsored Ads',
-                desc: 'Enter client name, upload sponsored file, start date, end date and target link to begin update'
-            }
-        case 'preview':
-            return {
-                title: 'Preview Sponsored Ads',
-                desc: 'View sponsored ads details below.'
-            }
-        default:
-            return {
-                title: '',
-                desc: ''
-            }
-    }
-})
-
-const closeSideModal = () => {
-    router.push({ path: router.path })
-    showSlideOver.value = false
-}
 </script>
