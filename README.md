@@ -1,1 +1,1 @@
-Homepod - Storipod Admin Platform
+Pod+ - Storipod For Bussiness Owners
